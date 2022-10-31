@@ -1,0 +1,21 @@
+﻿<Window x:Class="Had.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Had"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="758" Width="784">
+    <Grid Margin="0,0,0,116">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="753*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="start" Grid.Column="1" Content="Start" HorizontalAlignment="Left" Height="51" Margin="580,44,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R" Background="#FFE81D1D"/>
+        <Button x:Name="Snap" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Height="51" Margin="580,121,0,0" VerticalAlignment="Top" Width="106" Background="#FF3CE21B" FontFamily="Adobe Heiti Std R"/>
+        <Canvas x:Name="ImgCanvas" Grid.Column="1" HorizontalAlignment="Left" Height="604" Margin="38,44,0,0" VerticalAlignment="Top" Width="513" Background="#FF3D6F2C"/>
+        <Label x:Name="TxtScore" Grid.Column="1" Content="Score:0" HorizontalAlignment="Left" Height="32" Margin="580,198,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R"/>
+        <Label x:Name="TxtScore_Copy" Grid.Column="1" Content="High Score" HorizontalAlignment="Left" Height="32" Margin="580,259,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R"/>
+
+    </Grid>
+</Window>
