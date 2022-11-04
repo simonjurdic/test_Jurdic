@@ -11,11 +11,11 @@
             <ColumnDefinition Width="47*"/>
             <ColumnDefinition Width="753*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="start" Grid.Column="1" Content="Start" HorizontalAlignment="Left" Height="51" Margin="580,44,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R" Background="#FFE81D1D"/>
-        <Button x:Name="Snap" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Height="51" Margin="580,121,0,0" VerticalAlignment="Top" Width="106" Background="#FF3CE21B" FontFamily="Adobe Heiti Std R"/>
-        <Canvas x:Name="ImgCanvas" Grid.Column="1" HorizontalAlignment="Left" Height="604" Margin="38,44,0,0" VerticalAlignment="Top" Width="513" Background="#FF3D6F2C"/>
-        <Label x:Name="TxtScore" Grid.Column="1" Content="Score:0" HorizontalAlignment="Left" Height="32" Margin="580,198,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R"/>
-        <Label x:Name="TxtScore_Copy" Grid.Column="1" Content="High Score" HorizontalAlignment="Left" Height="32" Margin="580,259,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R"/>
+        <Button x:Name="start" Grid.Column="1" Content="Start" HorizontalAlignment="Left" Height="51" Margin="580,44,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R" Background="#FFE81D1D" Click="start_Click" KeyDown="KeyIsDown" KeyUp="KeyIsUp"/>
+        <Canvas x:Name="ImgCanvas" Grid.Column="1" HorizontalAlignment="Left" Height="604" Margin="38,44,0,0" VerticalAlignment="Top" Width="513" Background="#FF3D6F2C" LayoutUpdated="UpdatePictureBoxGraphics"/>
+        <Label x:Name="TxtScore" Grid.Column="1" Content="Score:0" HorizontalAlignment="Left" Height="32" Margin="580,121,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R"/>
+        <Label x:Name="TxtScore_Copy" Grid.Column="1" Content="High Score" HorizontalAlignment="Left" Height="32" Margin="580,158,0,0" VerticalAlignment="Top" Width="106" FontFamily="Adobe Heiti Std R"/>
+        <Label x:Name="casovac" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Height="33" Margin="580,195,0,0" VerticalAlignment="Top" Width="106"/>
 
     </Grid>
 </Window>
