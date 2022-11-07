@@ -21,8 +21,19 @@ namespace Had
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Circle> Snake = new List<Circle>();
+        public List<Circle> Had = new List<Circle>();
         private Circle food = new Circle();
+
+        int maxWidth;
+        int maxHeight;
+
+        int Score;
+        int highScore;
+
+        Random random = new Random();
+
+        bool goleft, goRight, goUp, goDown;
+
 
 
 
@@ -30,6 +41,8 @@ namespace Had
         public MainWindow()
         {
             InitializeComponent();
+
+            new Settings();
         }
 
         public void zacaljsemhrat()
@@ -56,7 +69,10 @@ namespace Had
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == KeySplineConverter.Left && Settings.direction !="right")
+            {
+                goleft = true;
+            }
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
@@ -83,6 +99,6 @@ namespace Had
         {
 
         }
-    }
+    }                  
     
 }
