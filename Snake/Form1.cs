@@ -34,20 +34,32 @@ namespace Snake
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Left && Settings.directions != "right")
-            {
-                goLeft = true;
-            }
+            
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Left && Settings.directions != "right")
+            {
+                goLeft = false;
+            }
+            if (e.KeyCode == Keys.Right && Settings.directions != "left")
+            {
+                goRight = false;
+            }
+            if (e.KeyCode == Keys.Down && Settings.directions != "up")
+            {
+                goDown = false;
+            }
+            if (e.KeyCode == Keys.Up && Settings.directions != "down")
+            {
+                goUp = false;
+            }
         }
 
         private void StartGame(object sender, EventArgs e)
         {
-
+            RestartGame();
         }
 
         private void GametimerEvent(object sender, EventArgs e)
@@ -61,7 +73,16 @@ namespace Snake
         }
         private void RestartGame()
         {
+            maxWidth = pictureBox1.Width / Settings.Width - 1;
+            maxHeight = pictureBox1.Height / Settings.Height - 1;
 
+            Snake.Clear();
+
+            button1.Enabled = false;
+            score = 0;
+            label1.Text = "Score" + score;
+
+            Circle head = new Circle { x = 10, y = 5 };
         }
         private void EatFood()
         {
