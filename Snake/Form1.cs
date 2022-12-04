@@ -69,7 +69,19 @@ namespace Snake
 
         private void updatePictureBox(object sender, PaintEventArgs e)
         {
-
+            Graphics canvas = e.Graphics;
+            Brush snakeColor;
+            for(int i =0; i < Snake.Count; i++)
+            {
+                if(i ==0)
+                {
+                    snakeColor = Brushes.Black;
+                }
+                else
+                {
+                    snakeColor = Brushes.DarkGreen;
+                }
+            }
         }
         private void RestartGame()
         {
@@ -83,6 +95,17 @@ namespace Snake
             label1.Text = "Score" + score;
 
             Circle head = new Circle { x = 10, y = 5 };
+            Snake.Add(head);
+
+            for(int i = 0; i < 10; i++)
+            {
+                Circle body = new Circle();
+                Snake.Add(body);
+            }
+
+            food = new Circle { x = random.Next(2, maxWidth),y = random.Next(2,maxHeight)};
+
+            timer1.Start();
         }
         private void EatFood()
         {
