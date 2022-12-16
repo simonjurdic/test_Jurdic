@@ -64,7 +64,68 @@ namespace Snake
 
         private void GametimerEvent(object sender, EventArgs e)
         {
+            if(goLeft)
+            {
+                Settings.directions = "left";
+            }
+            if(goRight)
+            {
+                Settings.directions="right";
+            }
+            if(goDown)
+            {
+                Settings.directions = "down";
+            }
+            if(goUp)
+            {
+                Settings.directions = "up";
+            }
+            for(int i = Snake.Count-1;i>=0; i--)
+            {
+                if(i==0)
+                {
+                    switch(Settings.directions)
+                    {
+                        case "left":
+                            Snake[i].x--;
+                            break;
+                        case "rignt":
+                            Snake[i].x++;
+                            break;
+                        case "down":
+                            Snake[i].y++;
+                            break;
+                        case "up":
+                            Snake[i].y--;
+                            break;
+                    }
 
+                    if(Snake[i].x<0)
+                    {
+                        Snake[i].x = maxWidth;
+                    }
+                    if (Snake[i].x > maxWidth)
+                    {
+                        Snake[i].x = 0;
+                    }
+                    if (Snake[i].y < 0)
+                    {
+                        Snake[i].y = maxHeight;
+                    }
+                    if (Snake[i].y > maxHeight)
+                    {
+                        Snake[i].y = 0;
+                    }
+                    
+                }
+                else
+                {
+                    Snake[i].x = Snake[i - 1].x;
+                    Snake[i].y = Snake[i - 1].y;
+                }
+            }
+
+            pictureBox1.Invalidate();
         }
 
         private void updatePictureBox(object sender, PaintEventArgs e)
@@ -81,7 +142,19 @@ namespace Snake
                 {
                     snakeColor = Brushes.DarkGreen;
                 }
+
+                canvas.FillEllipse(snakeColor, new Rectangle
+
+                    (Snake[i].x * Settings.Width,
+                     Snake[i].y * Settings.Height,
+                     Settings.Width, Settings.Height));    
             }
+            canvas.FillEllipse(Brushes.DarkRed, new Rectangle
+
+                   (food.x * Settings.Width,
+                    food.y * Settings.Height,
+                    Settings.Width, Settings.Height));
+
         }
         private void RestartGame()
         {
