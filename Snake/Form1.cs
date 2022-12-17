@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Snake
 {
@@ -34,26 +35,41 @@ namespace Snake
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            if (e.KeyCode == Keys.Left && Settings.directions != "right")
+            {
+                goLeft = true;
+            }
+            if (e.KeyCode == Keys.Right && Settings.directions != "left")
+            {
+                goRight = true;
+            }
+            if (e.KeyCode == Keys.Up && Settings.directions != "down")
+            {
+                goUp = true;
+            }
+            if (e.KeyCode == Keys.Down && Settings.directions != "up")
+            {
+                goDown = true;
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left && Settings.directions != "right")
+            if (e.KeyCode == Keys.Left)
             {
                 goLeft = false;
             }
-            if (e.KeyCode == Keys.Right && Settings.directions != "left")
+            if (e.KeyCode == Keys.Right)
             {
                 goRight = false;
             }
-            if (e.KeyCode == Keys.Down && Settings.directions != "up")
-            {
-                goDown = false;
-            }
-            if (e.KeyCode == Keys.Up && Settings.directions != "down")
+            if (e.KeyCode == Keys.Up)
             {
                 goUp = false;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                goDown = false;
             }
         }
 
@@ -116,6 +132,23 @@ namespace Snake
                     {
                         Snake[i].y = 0;
                     }
+
+                    if (Snake[i].x == food.x && Snake[i].y==food.y)
+                    {
+                        EatFood();
+                        
+                    }
+                     
+                    for (int j = 1; j < Snake.Count; j++)
+                    {
+                        if (Snake[i].x == Snake[j].x&&Snake[i].y == Snake[j].y)
+                        {
+                            GameOver();
+
+                        }
+                    }
+
+
                     
                 }
                 else
@@ -164,29 +197,53 @@ namespace Snake
             Snake.Clear();
 
             button1.Enabled = false;
+            button1.Enabled = false;
             score = 0;
-            label1.Text = "Score" + score;
+            label1.Text = "Score: " + score;
 
             Circle head = new Circle { x = 10, y = 5 };
-            Snake.Add(head);
+            Snake.Add(head); // adding the head part of the snake to the list
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Circle body = new Circle();
                 Snake.Add(body);
             }
-
-            food = new Circle { x = random.Next(2, maxWidth),y = random.Next(2,maxHeight)};
+            food = new Circle { x= random.Next(2, maxWidth), y = random.Next(2, maxHeight) };
 
             timer1.Start();
+
         }
         private void EatFood()
         {
+            score += 1;
+
+            label1.Text = "Score" + score;
+
+            Circle body = new Circle
+            {
+                x = Snake[Snake.Count - 1].x,
+                y = Snake[Snake.Count - 1].y
+            };
+
+            Snake.Add(body);
+
+            food = new Circle { x = random.Next(2, maxWidth), y = random.Next(2, maxHeight) };
+
 
         }
         private void GameOver()
         {
+            timer1.Stop();
+            button1.Enabled = true;
 
+            if(score>highScore)
+            {
+                highScore = score;
+                label2.Text = "high Score:"+ Environment.NewLine + highScore;
+                label2.ForeColor = Color.Maroon;
+                label2.TextAlign=ContentAlignment.MiddleCenter;
+            }
         }
     }
 }
