@@ -86,7 +86,7 @@ namespace Snake
             }
             if(goRight)
             {
-                Settings.directions="right";
+                Settings.directions = "right";
             }
             if(goDown)
             {
