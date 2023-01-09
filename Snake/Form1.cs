@@ -105,7 +105,7 @@ namespace Snake
                         case "left":
                             Snake[i].x--;
                             break;
-                        case "rignt":
+                        case "right":
                             Snake[i].x++;
                             break;
                         case "down":
